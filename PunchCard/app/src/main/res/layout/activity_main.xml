@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--  顶部栏  -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+<!--     切换全部还是单项的显示情况   -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="切换"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            />
+
+<!-- 日期选择 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="日期"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/tv_record"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="录音"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+<!--  日历  -->
+    <EditText
+        android:id="@+id/input_text"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="大家好"
+        />
+<!--底部栏-->
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <Button
+                android:id="@+id/speech"
+                android:text="Speech"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/record"
+                android:text="Record"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
