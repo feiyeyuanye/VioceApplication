@@ -1,4 +1,4 @@
-package com.example.punchcard;
+package com.example.punchcard.utils;
 
 import android.Manifest;
 import android.app.Activity;

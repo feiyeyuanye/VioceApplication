@@ -1,4 +1,4 @@
-package com.example.punchcard;
+package com.example.punchcard.record.activity;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -18,23 +18,30 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.punchcard.R;
+import com.example.punchcard.bean.RecordBean;
+import com.example.punchcard.record.adapter.RecordAdapter;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class RecordActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnStart,btnStop;
     private TextView tvBack;
+    private RecyclerView rv;
 
     private MediaRecorder mMediaRecorder;
     private String fileName,filePath;
+
+    private List<RecordBean> mList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +51,28 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         btnStart = findViewById(R.id.btn_start);
         btnStop = findViewById(R.id.btn_stop);
         tvBack = findViewById(R.id.tv_back);
+        rv = findViewById(R.id.rv);
 
         tvBack.setOnClickListener(this);
         btnStart.setOnClickListener(this);
         btnStop.setOnClickListener(this);
 
+        initData();
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this);
+        rv.setLayoutManager(layoutManager);
+        RecordAdapter adapter = new RecordAdapter(mList);
+        rv.setAdapter(adapter);
 
     }
 
+    private void initData() {
+        for(int i = 0; i < 6; i++) {
+            RecordBean aaa = new RecordBean("AAAAA");
+            mList.add(aaa);
+            RecordBean bbb = new RecordBean("BBBBB");
+            mList.add(bbb);
+        }
+    }
 
 
     private void startRecord(String str) {

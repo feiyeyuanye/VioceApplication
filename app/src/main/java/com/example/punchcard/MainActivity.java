@@ -2,20 +2,20 @@ package com.example.punchcard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.speech.tts.TextToSpeech;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.punchcard.record.activity.RecordActivity;
+import com.example.punchcard.utils.RequestPermission;
+
 import java.io.File;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
