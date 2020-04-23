@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        fileName = DateFormat.format("yyyyMMdd_HHmmss", Calendar.getInstance(Locale.CHINA)) + "sound.wav";
+        fileName = DateFormat.format("yyyyMMdd_HHmm", Calendar.getInstance(Locale.CHINA)) + "sound.wav";
         File destDir = new File(Environment.getExternalStorageDirectory() + "/jhr/tts/");
         if (!destDir.exists()) {
             destDir.mkdirs();

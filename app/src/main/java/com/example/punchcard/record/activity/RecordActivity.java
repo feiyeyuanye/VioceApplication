@@ -3,6 +3,7 @@ package com.example.punchcard.record.activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,12 +32,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Vector;
 
 public class RecordActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnStart,btnStop;
+    private Button btnStart;
     private TextView tvBack;
     private RecyclerView rv;
+    private RecordAdapter adapter;
 
     private MediaRecorder mMediaRecorder;
     private String fileName,filePath;
@@ -48,30 +51,47 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
 
+        initView();
+        initData();
+
+    }
+
+    private void initView() {
         btnStart = findViewById(R.id.btn_start);
-        btnStop = findViewById(R.id.btn_stop);
+//        btnStop = findViewById(R.id.btn_stop);
         tvBack = findViewById(R.id.tv_back);
         rv = findViewById(R.id.rv);
 
         tvBack.setOnClickListener(this);
         btnStart.setOnClickListener(this);
-        btnStop.setOnClickListener(this);
-
-        initData();
-        LinearLayoutManager layoutManager= new LinearLayoutManager(this);
-        rv.setLayoutManager(layoutManager);
-        RecordAdapter adapter = new RecordAdapter(mList);
-        rv.setAdapter(adapter);
-
+//        btnStop.setOnClickListener(this);
     }
 
     private void initData() {
-        for(int i = 0; i < 6; i++) {
-            RecordBean aaa = new RecordBean("AAAAA");
-            mList.add(aaa);
-            RecordBean bbb = new RecordBean("BBBBB");
-            mList.add(bbb);
+        getFileName(Environment.getExternalStorageDirectory() + "/jhr/record");
+
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this);
+        rv.setLayoutManager(layoutManager);
+        adapter = new RecordAdapter(mList,this);
+        rv.setAdapter(adapter);
+    }
+
+    public Vector<String> getFileName(String fileAbsolutePath) {
+        Vector<String> vecFile = new Vector<String>();
+        File file = new File(fileAbsolutePath);
+        File[] subFile = file.listFiles();
+        if (mList.size()>0)
+            mList.clear();
+
+        for (int i = 0; i < subFile.length; i++) {
+            // 判断是否为文件夹
+            if (!subFile[i].isDirectory()) {
+                RecordBean recordBean = new RecordBean(subFile[i].getName(),subFile[i].getAbsolutePath());
+                mList.add(recordBean);
+
+            }
         }
+        return vecFile;
     }
 
 
@@ -91,7 +111,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
             /* ②设置音频文件的编码：AAC/AMR_NB/AMR_MB/Default 声音的（波形）的采样 */
             mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
 
-            fileName = DateFormat.format("yyyy-MM-dd HH-mm-ss", Calendar.getInstance(Locale.CHINA)) + "_" + str + ".m4a";
+            fileName = DateFormat.format("yyyy-MM-dd HH-mm", Calendar.getInstance(Locale.CHINA)) + "_" + str + ".m4a";
             File destDir = new File(Environment.getExternalStorageDirectory() + "/jhr/record/");
             if (!destDir.exists()) {
                 destDir.mkdirs();
@@ -103,6 +123,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
             mMediaRecorder.prepare();
             /* ④开始 */
             mMediaRecorder.start();
+            btnStart.setText("正在录音...");
             Toast.makeText(this,"录音开始",Toast.LENGTH_SHORT).show();
         } catch (IllegalStateException e) {
             Log.e("failed!", e.getMessage());
@@ -154,7 +175,9 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
             mMediaRecorder.release();
             mMediaRecorder = null;
             Toast.makeText(this,"录音结束",Toast.LENGTH_SHORT).show();
-
+            getFileName(Environment.getExternalStorageDirectory() + "/jhr/record");
+            adapter.setData(mList);
+            adapter.notifyDataSetChanged();
         } catch (RuntimeException e) {
             mMediaRecorder.reset();
             mMediaRecorder.release();
@@ -171,10 +194,12 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_start:
-                fileNameDialog();
-                break;
-            case  R.id.btn_stop:
-                stopRecord();
+                if ("开始录音".equals(btnStart.getText())){
+                    fileNameDialog();
+                }else {
+                    stopRecord();
+                    btnStart.setText("开始录音");
+                }
                 break;
             case R.id.tv_back:
                 finish();

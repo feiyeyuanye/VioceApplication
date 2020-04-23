@@ -4,17 +4,19 @@ public class RecordBean {
 
 
     private String fileName;
-    private String fileTime;
+    private String filePath;
 
-    public RecordBean(String fileName){
+    public RecordBean(String fileName,String filePath){
         this.fileName = fileName;
+        this.filePath = filePath;
+
     }
 
     public String getFileName() {
         return fileName;
     }
 
-    public String getFileTime() {
-        return fileTime;
+    public String getFilePath() {
+        return filePath;
     }
 }
