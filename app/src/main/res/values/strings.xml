@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PunchCard</string>
+    <string name="action_add">Add</string>
+    <string name="action_remove">Remove</string>
 </resources>

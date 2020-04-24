@@ -49,42 +49,5 @@
 
     </RelativeLayout>
 
-<!--  日历  -->
-    <EditText
-        android:id="@+id/input_text"
-        android:layout_marginTop="60dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="大家好"
-        />
-<!--底部栏-->
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <Button
-                android:id="@+id/speech"
-                android:text="Speech"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:id="@+id/record"
-                android:text="Record"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
 
-    </LinearLayout>
 </RelativeLayout>
