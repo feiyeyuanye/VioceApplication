@@ -1,24 +1,12 @@
-package com.example.punchcard;
+package com.example.myhelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Environment;
-import android.speech.tts.TextToSpeech;
-import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.punchcard.record.activity.VioceActivity;
-import com.example.punchcard.utils.RequestPermission;
-
-import java.io.File;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Locale;
+import com.example.myhelper.record.activity.VioceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

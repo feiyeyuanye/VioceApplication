@@ -1,4 +1,4 @@
-package com.example.punchcard.config;
+package com.example.myhelper.config;
 
 import android.app.Application;
 

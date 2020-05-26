@@ -1,4 +1,4 @@
-package com.example.punchcard.bean;
+package com.example.myhelper.bean;
 
 public class RecordBean {
 

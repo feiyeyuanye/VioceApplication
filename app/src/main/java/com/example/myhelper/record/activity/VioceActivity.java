@@ -1,12 +1,8 @@
-package com.example.punchcard.record.activity;
+package com.example.myhelper.record.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,15 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.punchcard.R;
-import com.example.punchcard.record.fragment.ReadAloudFragment;
-import com.example.punchcard.record.fragment.RecordFragment;
-import com.example.punchcard.utils.RequestPermission;
+import com.example.myhelper.R;
+import com.example.myhelper.record.fragment.ReadAloudFragment;
+import com.example.myhelper.record.fragment.RecordFragment;
+import com.example.myhelper.utils.RequestPermission;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

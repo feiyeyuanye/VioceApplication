@@ -1,4 +1,4 @@
-package com.example.punchcard.record.adapter;
+package com.example.myhelper.record.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.punchcard.R;
-import com.example.punchcard.bean.RecordBean;
+import com.example.myhelper.bean.RecordBean;
+import com.example.myhelper.R;
 
 import java.io.File;
 import java.util.List;

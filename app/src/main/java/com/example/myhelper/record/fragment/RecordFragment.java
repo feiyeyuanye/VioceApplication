@@ -1,8 +1,7 @@
-package com.example.punchcard.record.fragment;
+package com.example.myhelper.record.fragment;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -14,21 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.punchcard.R;
-import com.example.punchcard.bean.RecordBean;
-import com.example.punchcard.record.adapter.RecordAdapter;
+import com.example.myhelper.R;
+import com.example.myhelper.bean.RecordBean;
+import com.example.myhelper.record.adapter.RecordAdapter;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Vector;
 
 public class RecordFragment extends Fragment implements View.OnClickListener, RecordAdapter.OnAdapterListener {
 
@@ -129,6 +124,9 @@ public class RecordFragment extends Fragment implements View.OnClickListener, Re
             /* ②设置音频文件的编码：AAC/AMR_NB/AMR_MB/Default 声音的（波形）的采样 */
             mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
 
+            if ("".equals(str)){
+                str = String.valueOf(DateFormat.format("yyyyMMdd HHmmss", Calendar.getInstance(Locale.CHINA)));
+            }
             fileName = DateFormat.format("yyyy-MM-dd HH-mm", Calendar.getInstance(Locale.CHINA)) + "_" + str + ".m4a";
             File destDir = new File(Environment.getExternalStorageDirectory() + "/jhr/record/");
             if (!destDir.exists()) {
@@ -167,8 +165,7 @@ public class RecordFragment extends Fragment implements View.OnClickListener, Re
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-                String str = edt.getText() == null ? "" : edt.getText()
-                        .toString();
+                String str = edt.getText() == null ? "" : edt.getText().toString();
 
                 startRecord(str);
                 dialog.dismiss();

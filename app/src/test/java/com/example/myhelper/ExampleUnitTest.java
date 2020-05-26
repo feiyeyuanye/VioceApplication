@@ -1,4 +1,4 @@
-package com.example.punchcard;
+package com.example.myhelper;
 
 import org.junit.Test;
 

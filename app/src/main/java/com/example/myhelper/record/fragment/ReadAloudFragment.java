@@ -1,8 +1,9 @@
-package com.example.punchcard.record.fragment;
+package com.example.myhelper.record.fragment;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.speech.tts.TextToSpeech;
@@ -16,14 +17,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.punchcard.R;
-import com.example.punchcard.bean.RecordBean;
-import com.example.punchcard.record.adapter.RecordAdapter;
+import com.example.myhelper.bean.RecordBean;
+import com.example.myhelper.R;
+import com.example.myhelper.record.adapter.RecordAdapter;
 
 import java.io.File;
 import java.io.IOException;
@@ -120,6 +122,7 @@ public class ReadAloudFragment extends Fragment implements RecordAdapter.OnAdapt
         rv.setAdapter(adapter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void readList(){
         // 朗读
         textToSpeech = new TextToSpeech(mContext, new TextToSpeech.OnInitListener() {
@@ -136,8 +139,10 @@ public class ReadAloudFragment extends Fragment implements RecordAdapter.OnAdapt
                 }
             }
         });
-
-
+        // 设置音调
+        textToSpeech.setPitch(1.0f);
+        // 设置语速
+        textToSpeech.setSpeechRate(1.0f);
         speech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
