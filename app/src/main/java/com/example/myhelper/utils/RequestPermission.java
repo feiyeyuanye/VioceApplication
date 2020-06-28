@@ -30,6 +30,7 @@ public class RequestPermission {
     public RequestPermission(){
 
     }
+
     interface PermissionGrant {
         void onPermissionGranted(int requestCode);
     }
