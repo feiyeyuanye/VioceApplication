@@ -1,4 +1,4 @@
-package com.example.myhelper;
+package com.example.myhelper.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.myhelper.R;
 import com.example.myhelper.record.activity.VioceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
