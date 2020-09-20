@@ -14,7 +14,6 @@ import java.util.List;
 
 public class RequestPermission {
 
-
     public static final String PERMISSION_FILE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     public static final String PERMISSION_RECORD = Manifest.permission.RECORD_AUDIO;
     public static final String PERMISSION_READ = Manifest.permission.READ_EXTERNAL_STORAGE;

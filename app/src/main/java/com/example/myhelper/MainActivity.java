@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initView();
         initData();
-
     }
 
     private void initData() {
